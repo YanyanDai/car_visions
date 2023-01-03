@@ -36,12 +36,12 @@ class Stop_color:
 
     def poseCallback(self,Pose):
 
-        X = Pose.position.x;
-        Y = Pose.position.y;
-        Z = Pose.position.z;
+        X = Pose.position.x
+        Y = Pose.position.y
+        Z = Pose.position.z
 
 
-        if Z >=8000 :                            
+        if Z >=100 :                            
             self.flag = True
         else:
             self.flag = False
@@ -56,6 +56,7 @@ class Stop_color:
         else:
             print("Henes forward")
 	    vel.linear.x = 70
+	self.flag = False
         rospy.loginfo(
                     "Publsh velocity command[{} m/s, {} rad/s]".format(
                         vel.linear.x, vel.angular.z))
