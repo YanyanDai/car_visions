@@ -49,7 +49,6 @@ class Stop_color:
     def move(self):	
 	vel = Twist()
 	
-        self.vel_pub.publish(vel)
 	if self.flag:
             print("stop")
 	    vel.linear.x = 0
@@ -57,6 +56,7 @@ class Stop_color:
             print("forward")
 	    vel.linear.x = 70
 	self.flag = False
+	self.vel_pub.publish(vel)
         rospy.loginfo(
                     "Publsh velocity command[{} m/s, {} rad/s]".format(
                         vel.linear.x, vel.angular.z))
@@ -68,7 +68,7 @@ if __name__ == '__main__':
         rospy.init_node("Stop_color")
         rospy.loginfo("Starting")
         obj = Stop_color()
-	rate = rospy.Rate(100)
+	rate = rospy.Rate(5)
 	while not rospy.is_shutdown():
 		obj.move()
         	rate.sleep()
