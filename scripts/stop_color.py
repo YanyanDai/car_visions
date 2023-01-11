@@ -51,10 +51,10 @@ class Stop_color:
 	
         self.vel_pub.publish(vel)
 	if self.flag:
-            print("Henes stop")
+            print("stop")
 	    vel.linear.x = 0
         else:
-            print("Henes forward")
+            print("forward")
 	    vel.linear.x = 70
 	self.flag = False
         rospy.loginfo(
